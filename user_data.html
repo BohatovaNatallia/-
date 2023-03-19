@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if not current_user.name %}
+	<form action="" method="post" name="user_data">
+	{{ form.csrf_token }}
+	<p>
+		Name:{{form.nameField(size=20)}}<br>
+		Surname:{{form.surnameField(size=20)}}<br>
+		Lastname:{{form.lastnameField(size=20)}}<br>
+	</p>
+	<p><input type="submit" value="Register"></p>
+	{% else %}
+		Name: {{current_user.name}}
+		Surname: {{current_user.surname}}
+		Lastname: {{current_user.lastname}}
+	{% endif %}
+</form>
+	<h1>Sucsess</h1>
+{% endblock %}

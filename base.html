@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style_1.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+ <header class="header">
+            <div class="container">
+
+<nav class="navigation">
+    <ul class="navigation_list">
+    <li class="navigation_list-item">
+<a href="http://127.0.0.1:5000/index">Главная</a>
+    </li>
+    <li class="navigation_list-item">
+        <a href="http://127.0.0.1:5000/contacts">Контакты</a>
+</li>
+<li class="navigation_list-item">
+    <a href="http://127.0.0.1:5000/about">О нас </a>
+</li>
+<li class="navigation_list-item">
+    <a href="http://127.0.0.1:5000/user">User </a>
+</li>
+<li class="navigation_list-item">
+    <a href="#">Добровольцы </a>
+  {% if not current_user.is_authenticated %}
+ <li class="navigation_list-item">
+		    <a href="/login">Авторизация</a>
+    </li>
+</li>
+        <li>
+            <a href="/group">Group</a>
+        </li>
+        {% endif %}
+         {% if  current_user.is_authenticated %}
+         <li class="navigation_list-item">
+		    <a href="/logout">Выход</a>
+        {% endif %}
+         </li>
+</ul>
+</nav>
+</div>
+</div>
+ </header>
+</body>
+
+	<hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+	{% block content %}{% endblock %}
+
+
+<section class="footer">
+    <div class="container">
+<div class="footer_wrap">
+</div>
+<div class="footer_wrap_text">
+<p>  Адрес: 220123 г. Жлобин, ул.Карла Маркса, 4 пом.146  </p>
+  <p>Время работы: Ежедневно 9.00-21.00  </p>
+<p>Телефоны: +375 (17) 366-98-88, +375 (29) 347-98-88</p>
+<p>Email: helpnear@gmail.com </p>
+</div>
+<div class="footer_wrap_icons">
+    <i class="fa-brands fa-viber"></i>
+    <i class="fa-brands fa-telegram"></i>
+    <i class="fa-brands fa-instagram"></i>
+</div>
+</di>
+    </div>
+</section>
+
+</html>

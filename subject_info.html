@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+				{% if user_type == 1 %}
+
+								<a>{{subject.name}}</a>
+								<a>{{subject.description}}</a>
+
+						{% for i in students %}
+								<div class="block-content">
+										<img class="block-content" src="data:;base64,{{i.picture}}">
+								</div>
+								<h1 class="list">{{i.name}}</h1>
+
+						{% endfor %}
+
+				{% endif %}
+
+
+
+
+{% endblock %}

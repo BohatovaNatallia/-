@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+		<h1 class="list">{{user.name}} {{user.surname}} {{user.lastname}}</h1>
+
+
+		{% for pic in pictures %}
+		<div class="block-content">
+			<img class="block-content" src="data:;base64,{{pic.picture}}">
+		</div>
+		{% endfor %}
+		{% if user_type == 1 %}
+			{% for i in subjects %}
+				<a href="/subject_info?subject_id={{i.id}}">{{i.name}}</a>
+			{% endfor %}
+		{% endif %}
+
+
+{% endblock %}

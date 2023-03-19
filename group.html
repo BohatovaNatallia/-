@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	{% if current_user.type_id == 1 %}
+		{% if users %}
+			{% for user in users %}
+				<div class="block-content">
+					<img class="block-content" src="data:;base64,{{user.picture}}">
+				</div>
+				<h1 class="list">{{user.name}} {{user.surname}} {{user.lastname}}</h1>
+			{% endfor %}
+		{% endif %}
+	{% endif %}
+
+	{% if current_user.type_id != 1 %}
+		{% if group %}
+			<h1 class="list">{{group.number}}</h1>
+			{% if users %}
+				{% for user in users %}
+				<h1 class="list">{{user.name}} {{user.surname}} {{user.lastname}}</h1>
+				{% endfor %}
+			{% endif %}
+		{% endif %}
+	{% endif %}
+
+	
+{% endblock %}
